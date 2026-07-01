@@ -109,7 +109,7 @@
       --wine-lt:   #9B3A63;
       --muted:     #6B6560;
       --border:    rgba(184,154,106,0.22);
-      --border-w:  rgba(155,58,99,0.3);
+      --border-w:  rgba(184,154,106,0.3);
 
       --display:   'Cormorant Garamond', Georgia, serif;
       --body:      'Inter', system-ui, sans-serif;
@@ -267,7 +267,7 @@
       position: absolute; top: 1.5rem; right: 1.75rem;
       font-family: var(--display); font-size: 1.8rem; color: var(--gold); opacity: 0.55; line-height: 1;
     }
-    .index-num { font-size: 0.7rem; color: var(--wine-lt); letter-spacing: 0.12em; font-weight: 600; margin-bottom: 0.6rem; }
+    .index-num { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.12em; font-weight: 600; margin-bottom: 0.6rem; }
     .index-card h3 { font-family: var(--display); font-size: 1.35rem; font-weight: 400; color: var(--paper); margin-bottom: 0.6rem; max-width: 85%; }
     .index-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.85rem; max-width: 65ch; }
     .index-q { font-size: 0.82rem; color: rgba(247,244,239,0.7); font-style: italic; font-family: var(--display); font-size: 1rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
@@ -283,7 +283,7 @@
     .inline-cta {
       margin-top: 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.25rem;
       flex-wrap: wrap; border: 1px solid var(--border-w); border-radius: 6px; padding: 1.4rem 1.75rem;
-      background: rgba(110,30,64,0.08);
+      background: rgba(184,154,106,0.1);
     }
     .inline-cta p { font-size: 0.95rem; color: var(--paper); font-family: var(--display); font-size: 1.15rem; }
     .inline-cta .btn-primary { flex-shrink: 0; }
@@ -322,7 +322,7 @@
     #values { background: var(--ink); }
     .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.85rem, 2vw, 1.25rem); margin-top: 3.25rem; }
     .value-card { border: 1px solid var(--border); border-radius: 4px; padding: clamp(1.25rem, 2.5vw, 1.75rem); }
-    .value-icon { font-size: 1.4rem; color: var(--wine-lt); margin-bottom: 1rem; }
+    .value-icon { font-size: 1.4rem; color: var(--gold); margin-bottom: 1rem; }
     .value-card h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 400; color: var(--paper); margin-bottom: 0.55rem; }
     .value-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
 
@@ -336,7 +336,7 @@
     .obj-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
     .obj-card:hover .obj-img img { transform: scale(1.04); }
     .obj-badge { position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(13,13,13,0.85); border: 1px solid var(--border); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); padding: 0.25em 0.7em; border-radius: 2px; }
-    .index-mini { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(13,13,13,0.85); border: 1px solid var(--border-w); font-size: 0.62rem; font-weight: 600; color: var(--wine-lt); padding: 0.25em 0.65em; border-radius: 2px; }
+    .index-mini { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(13,13,13,0.85); border: 1px solid var(--border-w); font-size: 0.62rem; font-weight: 600; color: var(--gold); padding: 0.25em 0.65em; border-radius: 2px; }
     .obj-body { padding: 1.2rem; }
     .obj-name { font-family: var(--display); font-size: 1.2rem; font-weight: 400; color: var(--paper); margin-bottom: 0.35rem; }
     .obj-meta { font-size: 0.76rem; color: var(--muted); margin-bottom: 0.7rem; }
@@ -376,6 +376,7 @@
     .contact-detail a { font-size: 0.9rem; color: var(--paper); display: flex; align-items: center; gap: 0.6rem; transition: color 0.2s; }
     .contact-detail a:hover { color: var(--gold); }
     .contact-detail a::before { content: attr(data-icon); font-size: 1rem; }
+    .contact-tg::before { content: ""; width: 1rem; height: 1rem; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="%23F7F4EF"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/></svg>') no-repeat center / contain; }
     form { display: flex; flex-direction: column; gap: 1rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     input, textarea, select {
@@ -483,7 +484,7 @@
     </nav>
     <div class="header-cta">
       <a class="phone-link" href="tel:+79251254394">+7 (925) 125-43-94</a>
-      <a class="btn-tg" href="https://t.me/waymaxgroup" target="_blank" rel="noopener">✈ Telegram</a>
+      <a class="btn-tg" href="https://t.me/waymaxgroup" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/></svg> Telegram</a>
     </div>
     <div class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></div>
   </div>
@@ -522,10 +523,10 @@
       </form>
     </div>
     <div class="hero-stats">
-      <div><div class="hero-stat-num">67<span>%</span></div><div class="hero-stat-label">активов мира хранится в недвижимости</div></div>
-      <div><div class="hero-stat-num">7<span> критериев</span></div><div class="hero-stat-label">в индексе надёжности застройщика</div></div>
-      <div><div class="hero-stat-num">1<span> человек</span></div><div class="hero-stat-label">лично ведёт вашу сделку</div></div>
-      <div><div class="hero-stat-num">0<span> ₽</span></div><div class="hero-stat-label">комиссия с покупателя</div></div>
+      <div><div class="hero-stat-num">67<span>%</span></div><div class="hero-stat-label">активов мира хранится&nbsp;в недвижимости</div></div>
+      <div><div class="hero-stat-num">7<span> критериев</span></div><div class="hero-stat-label">в&nbsp;индексе надёжности застройщика</div></div>
+      <div><div class="hero-stat-num">1<span> человек</span></div><div class="hero-stat-label">лично ведёт вашу&nbsp;сделку</div></div>
+      <div><div class="hero-stat-num">0<span> ₽</span></div><div class="hero-stat-label">комиссия&nbsp;с покупателя</div></div>
     </div>
   </div>
 </section>
@@ -807,7 +808,6 @@
         </div>
       </a>
     </div>
-    <p style="font-size:0.78rem;color:var(--muted);margin-top:1.5rem">* Баллы Индекса надёжности приведены для иллюстрации методологии и обновляются по итогам актуальной проверки.</p>
 
     <div class="inline-cta reveal">
       <p>Не нашли подходящий объект в подборке?</p>
@@ -861,14 +861,14 @@
         </ul>
         <div class="contact-detail">
           <a href="tel:+79251254394" data-icon="☎">+7 (925) 125-43-94</a>
-          <a href="https://t.me/waymaxgroup" target="_blank" rel="noopener" data-icon="✈">Telegram: @waymaxgroup</a>
+          <a href="https://t.me/waymaxgroup" target="_blank" rel="noopener" class="contact-tg">Telegram: @waymaxgroup</a>
           <a href="mailto:waymaxgroup@yandex.ru" data-icon="✉">waymaxgroup@yandex.ru</a>
           <a href="https://maps.google.com/?q=Москва,+Шлюзовая+наб.,+8С1" target="_blank" rel="noopener" data-icon="◎">Шлюзовая наб., 8С1, Москва</a>
         </div>
       </div>
       <form id="contactForm" class="reveal" onsubmit="handleSubmit(event)">
         <div class="form-row">
-          <input type="text" name="name" placeholder="Ваше имя (необязательно)" autocomplete="name" />
+          <input type="text" name="name" placeholder="Ваше имя" autocomplete="name" />
           <input type="tel" name="phone" placeholder="Телефон *" required autocomplete="tel" inputmode="tel" />
         </div>
         <select name="goal">

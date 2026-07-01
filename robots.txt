@@ -1,0 +1,37 @@
+# Стандартные поисковые системы
+User-agent: *
+Allow: /
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (обучение Gemini, не влияет на обычную индексацию)
+User-agent: Google-Extended
+Allow: /
+
+# Яндекс
+User-agent: YandexBot
+Allow: /
+
+Sitemap: https://waymaxgroup.ru/sitemap.xml
