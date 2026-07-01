@@ -963,14 +963,24 @@
       goal: form.goal.value,
       budget: form.budget.value,
       message: form.message.value,
+      source: 'contact_form',
       ...getLeadMeta()
     };
-    console.log('Lead submitted:', data);
-    // Здесь подключите вашу CRM (например, amoCRM) или email-сервис — отправляйте объект data целиком
-    if (typeof ym === 'function') { ym(110088530, 'reachGoal', 'lead_form_submit'); }
-    btn.textContent = 'Отправлено ✓';
-    btn.style.background = '#4a7c59';
+    btn.textContent = 'Отправляем...';
     btn.disabled = true;
+    fetch('/webhook/site', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(() => {
+      if (typeof ym === 'function') { ym(110088530, 'reachGoal', 'lead_form_submit'); }
+      btn.textContent = 'Отправлено ✓';
+      btn.style.background = '#4a7c59';
+    }).catch(() => {
+      btn.textContent = 'Ошибка, попробуйте ещё раз';
+      btn.style.background = '#c0392b';
+      btn.disabled = false;
+    });
   }
 
   function handleQuickSubmit(e) {
@@ -978,13 +988,22 @@
     const form = e.target;
     const btn = form.querySelector('button');
     const data = { phone: form.phone.value, source: 'hero_quickform', ...getLeadMeta() };
-    console.log('Quick lead submitted:', data);
-    // Здесь подключите вашу CRM (например, amoCRM) или email-сервис — отправляйте объект data целиком
-    if (typeof ym === 'function') { ym(110088530, 'reachGoal', 'lead_quickform_submit'); }
-    btn.textContent = 'Спасибо, ждите звонка ✓';
-    btn.style.background = '#4a7c59';
-    form.querySelector('input').disabled = true;
+    btn.textContent = 'Отправляем...';
     btn.disabled = true;
+    fetch('/webhook/site', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(() => {
+      if (typeof ym === 'function') { ym(110088530, 'reachGoal', 'lead_quickform_submit'); }
+      btn.textContent = 'Спасибо, ждите звонка ✓';
+      btn.style.background = '#4a7c59';
+      form.querySelector('input').disabled = true;
+    }).catch(() => {
+      btn.textContent = 'Ошибка, попробуйте ещё раз';
+      btn.style.background = '#c0392b';
+      btn.disabled = false;
+    });
   }
 
   /* Track phone clicks as a conversion goal — clicks-to-call matter for Direct optimization too */
