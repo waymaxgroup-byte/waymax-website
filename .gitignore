@@ -1,1 +1,6 @@
 .wrangler/
+
+# Notes for developers, not part of the site. Everything committed here is
+# published at the domain root by Pages, and this file names the path of the
+# deploy token — it must never end up on waymaxgroup.ru/CLAUDE.md.
+CLAUDE.md
