@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<!-- Исходник обложки ссылки (og:image), 1200x630. Рендерится так:
+     chrome --headless --hide-scrollbars --force-device-scale-factor=2 \
+            --window-size=1200,730 --screenshot=cover@2x.png og-cover.source.html
+     Окно берётся выше 630: у headless-Chrome вьюпорт на ~87px ниже окна, и всё,
+     что ниже него, выходит из кадра чёрной полосой. Снимок 2400x1260 потом
+     ужимается до 1200x630 через canvas.toDataURL('image/jpeg', 0.9) — на сервере
+     нет ни PIL, ни ImageMagick, ни cjpeg. Шрифт — тот же, что на сайте. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap">
+<style>
+  *{margin:0; padding:0; box-sizing:border-box}
+  html,body{width:1200px; height:630px; overflow:hidden; background:#0D0D0D}
+  .cover{position:relative; width:1200px; height:630px; overflow:hidden; background:#0D0D0D}
+  .bg{position:absolute; top:0; left:0; width:1200px; height:630px;
+      object-fit:cover; object-position:center 45%}
+  .veil{position:absolute; inset:0;
+        background:linear-gradient(180deg, rgba(8,8,8,.52) 0%, rgba(8,8,8,.68) 45%, rgba(8,8,8,.84) 100%)}
+  .in{position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:40px; text-align:center; padding:84px}
+  .kicker{font-family:'Inter',sans-serif; font-weight:300; font-size:23px; letter-spacing:.3em;
+          text-transform:uppercase; color:#D4B896; text-shadow:0 2px 18px rgba(0,0,0,.6)}
+  .brand{font-family:'Cormorant Garamond',Georgia,serif; font-weight:300; font-size:150px;
+         line-height:1; letter-spacing:.16em; color:#F7F4EF; text-shadow:0 6px 40px rgba(0,0,0,.55);
+         text-indent:.16em}
+  .brand span{color:#B89A6A}
+  .hair{width:144px; height:1px; background:#B89A6A; opacity:.75}
+  .tail{font-family:'Inter',sans-serif; font-weight:300; font-size:28px; letter-spacing:.06em;
+        color:#DED8D0; text-shadow:0 2px 18px rgba(0,0,0,.6)}
+  .frame{position:absolute; inset:34px; border:1px solid rgba(184,154,106,.28)}
+</style>
+<div class="cover">
+  <img class="bg" src="hero-bg.jpg" alt="">
+  <div class="veil"></div>
+  <div class="frame"></div>
+  <div class="in">
+    <p class="kicker">Москва · инвестиционная недвижимость</p>
+    <p class="brand">W<span>·</span>M<span>·</span>X</p>
+    <div class="hair"></div>
+    <p class="tail">Недвижимость для роста капитала</p>
+  </div>
+</div>
