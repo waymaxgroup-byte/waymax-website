@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <meta name="color-scheme" content="dark light" />
+  <script>
+    /* Та же тема, что и на главной: ключ общий, поэтому выбор переносится
+       между страницами. Выставляется до отрисовки, иначе мигает. */
+    try {
+      var t = localStorage.getItem('wmx-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Политика конфиденциальности — Waymax Group</title>
@@ -22,9 +31,23 @@
       --ink: #0D0D0D; --paper: #F7F4EF; --gold: #B89A6A; --gold-lt: #D4B896;
       --muted: #6B6560; --border: rgba(184,154,106,0.22);
       --display: 'Cormorant Garamond', Georgia, serif; --body: 'Inter', system-ui, sans-serif;
+
+      /* Те же роли, что на главной: страница с политикой не должна остаться
+         чёрной, когда весь сайт переключили в светлую тему. */
+      --bg: var(--ink); --fg: var(--paper); --fg-soft: rgba(247,244,239,0.78);
+    }
+    :root[data-theme="light"] {
+      --bg: var(--paper); --fg: #131110; --fg-soft: rgba(19,17,16,0.78);
+      --border: rgba(184,154,106,0.42); color-scheme: light;
+    }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg: var(--paper); --fg: #131110; --fg-soft: rgba(19,17,16,0.78);
+        --border: rgba(184,154,106,0.42); color-scheme: light;
+      }
     }
     body {
-      background: var(--ink); color: var(--paper); font-family: var(--body); font-weight: 300;
+      background: var(--bg); color: var(--fg); font-family: var(--body); font-weight: 300;
       font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased;
     }
     a { color: var(--gold); text-decoration: underline; }
@@ -33,23 +56,23 @@
       border-bottom: 1px solid var(--border); padding: 1.5rem 0; margin-bottom: 1rem;
     }
     .header-inner { display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-family: var(--display); font-size: 1.4rem; letter-spacing: 0.15em; color: var(--paper); text-decoration: none; }
+    .logo { font-family: var(--display); font-size: 1.4rem; letter-spacing: 0.15em; color: var(--fg); text-decoration: none; }
     .logo span { color: var(--gold); }
     .back-link { font-size: 0.8rem; color: var(--muted); text-decoration: none; }
     .back-link:hover { color: var(--gold); }
     main { padding: 3rem 0 5rem; }
     h1 {
       font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400;
-      color: var(--paper); margin-bottom: 0.5rem;
+      color: var(--fg); margin-bottom: 0.5rem;
     }
     .updated { font-size: 0.82rem; color: var(--muted); margin-bottom: 2.5rem; }
     h2 {
       font-family: var(--display); font-size: 1.5rem; font-weight: 500; color: var(--gold);
       margin: 2.5rem 0 1rem;
     }
-    h3 { font-size: 1rem; font-weight: 600; color: var(--paper); margin: 1.5rem 0 0.6rem; }
-    p { color: rgba(247,244,239,0.78); margin-bottom: 1rem; font-size: 0.95rem; }
-    ul, ol { margin: 0 0 1rem 1.4rem; color: rgba(247,244,239,0.78); }
+    h3 { font-size: 1rem; font-weight: 600; color: var(--fg); margin: 1.5rem 0 0.6rem; }
+    p { color: var(--fg-soft); margin-bottom: 1rem; font-size: 0.95rem; }
+    ul, ol { margin: 0 0 1rem 1.4rem; color: var(--fg-soft); }
     li { margin-bottom: 0.5rem; font-size: 0.95rem; }
     footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; }
     .footer-copy { font-size: 0.72rem; color: var(--muted); }
