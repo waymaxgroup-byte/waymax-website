@@ -27,23 +27,25 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Палитра та же, что на главной и в Waymax PRO. Золото здесь только
+       чернила — заливок на этой странице нет. */
     :root {
-      --ink: #0D0D0D; --paper: #F7F4EF; --gold: #B89A6A; --gold-lt: #D4B896;
-      --muted: #6B6560; --border: rgba(184,154,106,0.22);
+      --ink: #0F1013; --paper: #F7F4EE; --gold-solid: #E0BB72; --gold-lt: #EAD2A2;
       --display: 'Cormorant Garamond', Georgia, serif; --body: 'Inter', system-ui, sans-serif;
 
       /* Те же роли, что на главной: страница с политикой не должна остаться
          чёрной, когда весь сайт переключили в светлую тему. */
-      --bg: var(--ink); --fg: var(--paper); --fg-soft: rgba(247,244,239,0.78);
+      --bg: #0F1013; --fg: #F7F6F3; --fg-soft: #B8B6C2; --muted: #9A98A4;
+      --gold: #E0BB72; --border: #40424E; color-scheme: dark;
     }
     :root[data-theme="light"] {
-      --bg: var(--paper); --fg: #131110; --fg-soft: rgba(19,17,16,0.78);
-      --border: rgba(184,154,106,0.42); color-scheme: light;
+      --bg: #F7F4EE; --fg: #1A1815; --fg-soft: #5C5850; --muted: #6B655C;
+      --gold: #8A6520; --border: #D5CBB8; color-scheme: light;
     }
     @media (prefers-color-scheme: light) {
       :root:not([data-theme="dark"]) {
-        --bg: var(--paper); --fg: #131110; --fg-soft: rgba(19,17,16,0.78);
-        --border: rgba(184,154,106,0.42); color-scheme: light;
+        --bg: #F7F4EE; --fg: #1A1815; --fg-soft: #5C5850; --muted: #6B655C;
+        --gold: #8A6520; --border: #D5CBB8; color-scheme: light;
       }
     }
     body {
