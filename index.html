@@ -115,16 +115,9 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Fonts must never block the first paint. media="print" keeps the sheet
-       out of the render-blocking set, onload promotes it once it arrives. If
-       fonts.googleapis.com is slow or blocked (mobile carrier, content blocker,
-       Private Relay) the page still paints in the fallback face instead of
-       hanging on a white screen until the network times out. -->
-  <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+  <!-- Шрифты свои, не с fonts.googleapis.com — не блокирует отрисовку и не
+       уходит за границу с адресом посетителя. 24.09.2026. -->
+  <link rel="stylesheet" href="/fonts/fonts.css">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
