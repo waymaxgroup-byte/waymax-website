@@ -230,18 +230,18 @@
     .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .logo { font-family: var(--display); font-size: 1.5rem; font-weight: 300; letter-spacing: 0.15em; color: var(--fg); }
     .logo span { color: var(--gold); }
-    nav { display: flex; gap: 1.6rem; align-items: center; }
+    nav { display: flex; gap: 1.2rem; align-items: center; }
     nav a { white-space: nowrap; }
     /* Шапка шире колонки текста: в 1200 px шесть пунктов, телефон, тема и Telegram не
        помещались никогда — кнопка Telegram выходила за сетку на 67 px на любой ширине. */
     header .container { max-width: 1400px; }
-    .header-inner { gap: 2rem; }
+    .header-inner { gap: 1.5rem; }
     nav a {
-      font-size: 0.76rem; font-weight: 400; letter-spacing: 0.09em; text-transform: uppercase;
+      font-size: 0.76rem; font-weight: 400; letter-spacing: 0.07em; text-transform: uppercase;
       color: var(--muted); transition: color 0.2s;
     }
     nav a:hover { color: var(--gold); }
-    .header-cta { display: flex; align-items: center; gap: 1.25rem; }
+    .header-cta { display: flex; align-items: center; gap: 0.9rem; }
     .phone-link { font-size: 0.92rem; color: var(--fg); white-space: nowrap; }
     .phone-link:hover { color: var(--gold); }
     .btn-tg {
@@ -267,11 +267,12 @@
     }
     .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .burger span { display: block; width: 24px; height: 1px; background: var(--fg); }
-    /* Шапка в одну строку помещается от 1280 px (замер 29.09.2026). Уже — меню уходит
+    /* Восемь пунктов, телефон, тема и Telegram в одну строку помещаются от 1300 px
+       (замер 29.09.2026, с МАСТА и Ботом в меню). Уже — меню уходит
        в бургер: иначе пункты рвались на две строки, «Контакты» слипались с телефоном,
        а кнопка Telegram обрезалась краем экрана. Новый пункт в шапку — только с новым
        замером. */
-    @media (max-width: 1279px) {
+    @media (max-width: 1299px) {
       nav { display: none; }
       .burger { display: flex; }
       .header-cta { margin-left: auto; }
@@ -419,26 +420,36 @@
     .inline-cta p { font-size: 0.95rem; color: var(--fg); font-family: var(--display); font-size: 1.15rem; }
     .inline-cta .btn-primary { flex-shrink: 0; }
 
-    /* ── TOOLS: бот и МАСТА (29.09.2026) ──
-       Встал после «Полного цикла», поэтому фоны разделов ниже сдвинуты на один:
-       чередование bg / bg-2 не должно ломаться двумя одинаковыми полосами подряд. */
-    #tools { background: var(--bg); }
-    .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 1.75rem); margin-top: 3.25rem; }
-    .tool-card { display: flex; flex-direction: column; padding: clamp(1.5rem, 3vw, 2.4rem); border: 1px solid var(--border); border-radius: 4px; background: var(--bg-2); transition: border-color 0.3s; }
-    .tool-card:hover { border-color: var(--gold); }
-    .tool-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
-    .tool-card h3 { font-family: var(--display); font-size: clamp(1.45rem, 2.2vw, 1.9rem); font-weight: 400; line-height: 1.25; color: var(--fg); margin-bottom: 0.8rem; text-wrap: balance; }
-    .tool-card > p { font-size: 0.9rem; color: var(--fg-soft); line-height: 1.75; margin-bottom: 1.4rem; }
-    .tool-list { margin-bottom: 1.8rem; }
-    .tool-list li { display: grid; grid-template-columns: 1.1rem 1fr; gap: 0.5rem; padding: 0.7rem 0; border-top: 1px solid var(--border); font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
-    .tool-list li::before { content: "—"; color: var(--gold); }
-    .tool-list b { color: var(--fg); font-weight: 400; }
-    .tool-list q { color: var(--fg-soft); font-style: italic; quotes: "«" "»"; white-space: nowrap; }
-    .tool-actions { margin-top: auto; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
-    .tool-actions a { padding-left: 1.6em; padding-right: 1.6em; }
-    .tool-note { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
-    .tool-link { font-size: 0.78rem; letter-spacing: 0.06em; color: var(--gold); margin-top: 1.1rem; display: inline-block; }
-    .tool-link:hover { text-decoration: underline; }
+    /* ── МАСТА и БОТ (29.09.2026) ──
+       Два раздела после «Полного цикла», у каждого свой пункт в шапке (Макс, 29.09:
+       «отдельными блоками МАСТА и БОТ»). Два раздела подряд сохраняют чередование
+       bg / bg-2: #masta на bg, #bot на bg-2, дальше как было. */
+    #masta { background: var(--bg); }
+    #bot { background: var(--bg-2); }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+    .split .section-lead { margin: 1rem 0 2rem; }
+    .split-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; align-items: center; }
+    .split-note { font-size: 0.8rem; color: var(--muted); margin-top: 1.1rem; }
+    .split-link { display: inline-block; font-size: 0.8rem; letter-spacing: 0.06em; color: var(--gold); margin-top: 1.1rem; }
+    .split-link:hover { text-decoration: underline; }
+    /* Пять букв МАСТА: имя метода и есть его устройство, поэтому буквы — главный рисунок. */
+    .masta-dims { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .masta-dim { display: grid; grid-template-columns: 3.2rem 1fr; gap: 1rem; align-items: center; padding: 1.05rem 1.5rem; border-top: 1px solid var(--border); background: var(--bg-2); }
+    .masta-dim:first-child { border-top: 0; }
+    .masta-dim b { font-family: var(--display); font-size: 2.3rem; font-weight: 300; color: var(--gold); line-height: 1; }
+    .masta-dim span { font-size: 0.9rem; color: var(--fg); }
+    .masta-dim small { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
+    /* Бот: восемь умений плиткой, у каждой пример запроса — его можно отправить как есть. */
+    .bot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-top: 3rem; }
+    .bot-tile { background: var(--bg-2); padding: clamp(1.25rem, 2.4vw, 1.75rem); display: flex; flex-direction: column; }
+    .bot-tile h3 { font-family: var(--display); font-size: 1.25rem; font-weight: 400; color: var(--fg); margin-bottom: 0.45rem; }
+    .bot-tile p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    /* q — фраза, которую можно отправить боту как есть; .cmd — кнопка или команда, без кавычек. */
+    .bot-tile q, .bot-tile .cmd { margin-top: auto; align-self: flex-start; font-size: 0.78rem; color: var(--fg-soft); border: 1px solid var(--border-w); border-radius: 2px; padding: 0.25em 0.7em; quotes: "«" "»"; }
+    .bot-tile .cmd { quotes: none; }
+    .bot-tile--gold { box-shadow: inset 0 2px 0 var(--gold); }
+    .bot-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem 2rem; flex-wrap: wrap; margin-top: 2rem; }
+    .bot-foot p { font-size: 0.85rem; color: var(--muted); max-width: 52ch; }
     /* ── HOW WE WORK / FULL CYCLE ── */
     #how { background: var(--bg-2); }
     .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 1.75rem); margin-top: 3.25rem; }
@@ -449,7 +460,7 @@
     .how-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
 
     /* ── PROCESS STEPS ── */
-    #process { background: var(--bg-2); }
+    #process { background: var(--bg); }
     .steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(0.75rem, 2vw, 1.25rem); margin-top: 3.25rem; }
     .step { border-top: 1px solid var(--border); padding-top: 1.4rem; }
     .step-num { font-family: var(--display); font-size: 2.6rem; color: var(--gold-ghost); line-height: 1; margin-bottom: 0.7rem; }
@@ -457,7 +468,7 @@
     .step p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
     /* ── FOUNDER ── */
-    #founder { background: var(--bg); }
+    #founder { background: var(--bg-2); }
     .founder-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
     .founder-img { border-radius: 4px; overflow: hidden; filter: grayscale(1); }
     .founder-img img { width: 100%; display: block; }
@@ -470,7 +481,7 @@
     .founder-name { font-family: var(--display); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--fg); margin-bottom: 0.2rem; }
 
     /* ── VALUES ── */
-    #values { background: var(--bg-2); }
+    #values { background: var(--bg); }
     .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.85rem, 2vw, 1.25rem); margin-top: 3.25rem; }
     .value-card { border: 1px solid var(--border); border-radius: 4px; padding: clamp(1.25rem, 2.5vw, 1.75rem); }
     .value-icon { font-size: 1.4rem; color: var(--gold); margin-bottom: 1rem; }
@@ -478,7 +489,7 @@
     .value-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
 
     /* ── OBJECTS ── */
-    #objects { background: var(--bg); }
+    #objects { background: var(--bg-2); }
     .objects-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; gap: 1.5rem; flex-wrap: wrap; }
     .objects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.75rem, 2vw, 1.25rem); }
     .obj-card { display: block; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: border-color 0.3s, transform 0.3s; cursor: pointer; }
@@ -494,7 +505,7 @@
     .obj-price { font-size: 0.84rem; font-weight: 500; color: var(--gold); }
 
     /* ── FAQ (SEO + AI answer engines) ── */
-    #faq { background: var(--bg-2); }
+    #faq { background: var(--bg); }
     .faq-list { margin-top: 2.75rem; display: flex; flex-direction: column; gap: 0.85rem; max-width: 820px; }
     .faq-item { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
     .faq-q {
@@ -509,7 +520,7 @@
     .faq-a p { font-size: 0.87rem; color: var(--muted); line-height: 1.8; }
 
     /* ── CONTACT ── */
-    #contact { background: var(--bg); }
+    #contact { background: var(--bg-2); }
     .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
     .contact-info h2 { margin-bottom: 1.25rem; }
     .contact-info p { color: var(--muted); line-height: 1.85; margin-bottom: 2rem; }
@@ -584,7 +595,8 @@
       .phil-img { order: -1; }
       .index-grid { grid-template-columns: 1fr; }
       .how-grid { grid-template-columns: 1fr 1fr; }
-      .tools-grid { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; }
+      .bot-grid { grid-template-columns: 1fr 1fr; }
       .steps-grid { grid-template-columns: repeat(2, 1fr); }
       .founder-grid { grid-template-columns: 1fr; }
       .founder-img { max-width: 320px; margin: 0 auto; }
@@ -595,6 +607,7 @@
     }
     @media (max-width: 620px) {
       .how-grid { grid-template-columns: 1fr; }
+      .bot-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr 1fr; }
       .values-grid { grid-template-columns: 1fr; }
       .objects-grid { grid-template-columns: 1fr; }
@@ -651,6 +664,8 @@
       <a href="index.html#philosophy">Философия</a>
       <a href="index.html#index-reliability">Индекс надёжности</a>
       <a href="index.html#how">Услуги</a>
+      <a href="index.html#masta">МАСТА</a>
+      <a href="index.html#bot">Бот</a>
       <a href="index.html#founder">Основатель</a>
       <a href="index.html#objects">Объекты</a>
       <a href="index.html#contact">Контакты</a>
@@ -680,7 +695,8 @@
   <a href="index.html#philosophy" onclick="closeMobileNav()">Философия</a>
   <a href="index.html#index-reliability" onclick="closeMobileNav()">Индекс надёжности</a>
   <a href="index.html#how" onclick="closeMobileNav()">Услуги</a>
-  <a href="index.html#tools" onclick="closeMobileNav()">Бот и МАСТА</a>
+  <a href="index.html#masta" onclick="closeMobileNav()">МАСТА</a>
+  <a href="index.html#bot" onclick="closeMobileNav()">Бот</a>
   <a href="index.html#founder" onclick="closeMobileNav()">Основатель</a>
   <a href="index.html#objects" onclick="closeMobileNav()">Объекты</a>
   <a href="index.html#contact" onclick="closeMobileNav()">Контакты</a>
@@ -859,47 +875,51 @@
   </div>
 </section>
 
-<!-- TOOLS: Telegram-бот «Waymax Недвижимость» и МАСТА. Ссылки на бота несут метку
-     start=site — в кабинете МАСТЫ видно, сколько людей пришло с этого сайта. Список
-     умений бота повторяет его «Что я умею» (work/masta, smartbot.WHAT_I_CAN). -->
-<section id="tools">
+<!-- МАСТА: коротко о методе и переход на masta.waymaxgroup.ru. Названия пяти измерений
+     и подписи взяты с сайта МАСТЫ (engine.DIM_RU, site.DIM_PITCH): поменялись там — поменять здесь. -->
+<section id="masta">
+  <div class="container split">
+    <div>
+      <p class="section-eyebrow reveal">МАСТА · авторская система Waymax</p>
+      <h2 class="reveal">Квартира, которая подходит <em>именно вам</em></h2>
+      <p class="section-lead reveal">Рынок оценивает объект. МАСТА оценивает, насколько объект подходит конкретному человеку: пять измерений, сорок критериев и веса по вашим ответам. Анкета занимает 7–10 минут, до первого показа вы получаете документ «Идеальная квартира», а по каждому объекту индекс и рекомендацию: покупать, рассмотреть или не покупать. О компромиссах вы узнаёте до сделки.</p>
+      <div class="split-actions reveal">
+        <a class="btn-primary" href="https://masta.waymaxgroup.ru/anketa" target="_blank" rel="noopener">Заполнить анкету</a>
+        <a class="btn-outline" href="https://masta.waymaxgroup.ru" target="_blank" rel="noopener">Сайт МАСТЫ</a>
+      </div>
+      <a class="split-link reveal" href="https://masta.waymaxgroup.ru/partneram" target="_blank" rel="noopener">Брокерам: работать по системе МАСТА →</a>
+    </div>
+    <div class="masta-dims reveal" aria-label="Пять измерений МАСТА">
+      <div class="masta-dim"><b>М</b><span>Мера соответствия<small>поддерживает ли квартира вашу реальную жизнь</small></span></div>
+      <div class="masta-dim"><b>А</b><span>Архитектура<small>планировка, зонирование, хранение, форма комнат</small></span></div>
+      <div class="masta-dim"><b>С</b><span>Среда и восприятие<small>свет, вид, тишина, приватность, воздух</small></span></div>
+      <div class="masta-dim"><b>Т</b><span>Территория<small>район, дорога, школы, парки, окружение</small></span></div>
+      <div class="masta-dim"><b>А</b><span>Актив<small>квартира как капитал: рынок, ликвидность, цена через годы</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- БОТ «Waymax Недвижимость». Ссылки несут метку start=site — в кабинете МАСТЫ видно,
+     сколько людей пришло с этого сайта. Умения повторяют «Что я умею» в самом боте
+     (work/masta, smartbot.WHAT_I_CAN); примеры проверены на его базе 29.09.2026. -->
+<section id="bot">
   <div class="container">
-    <p class="section-eyebrow reveal">Новое в Waymax</p>
-    <h2 class="reveal">Покупайте <em>с цифрами</em> на руках</h2>
-    <p class="section-lead reveal" style="margin-top:1rem">То, что обычно знает только брокер, теперь у вас под рукой. Два собственных инструмента Waymax, бесплатно и без звонков.</p>
-    <div class="tools-grid">
-      <div class="tool-card reveal">
-        <div class="tool-tag">Telegram-бот · бесплатно</div>
-        <h3>Рынок новостроек Москвы — в одном чате</h3>
-        <p>Бот «Waymax Недвижимость» отвечает за секунды, днём и ночью. База обновляется каждую ночь.</p>
-        <ul class="tool-list">
-          <li><span><b>Любой ЖК</b>: фото, цены, сроки сдачи, планировки, что рядом и точка на карте</span></li>
-          <li><span><b>Подбор</b>: сколько квартир под ваш бюджет и срок сдачи и почём: <q>двушка до 25 млн</q></span></li>
-          <li><span><b>Сравнение</b> двух проектов по цене метра, срокам и инфраструктуре: <q>ЭРА или Шагал</q></span></li>
-          <li><span><b>Ипотека</b>: платёж и нужный доход: <q>15 млн, взнос 3 млн, 30 лет</q></span></li>
-          <li><span><b>Цены по районам</b> и <b>слежение за ЖК</b>: бот сам напишет, когда меняются цены</span></li>
-          <li><span><b>Разбор МАСТА</b> за пять минут: что искать именно вам</span></li>
-        </ul>
-        <div class="tool-actions">
-          <a class="btn-primary" href="https://t.me/waymaxgroup_bot?start=site" target="_blank" rel="noopener">Открыть бота</a>
-        </div>
-        <div class="tool-note">Номер телефона по желанию. Эксперт подключится, только когда вы попросите.</div>
-      </div>
-      <div class="tool-card reveal">
-        <div class="tool-tag">МАСТА · авторская система Waymax</div>
-        <h3>Квартира, которая подходит именно вам</h3>
-        <p>Рынок оценивает объект. МАСТА оценивает, насколько объект подходит конкретному человеку: пять измерений, сорок критериев и веса по вашим ответам. О компромиссах вы узнаёте до сделки.</p>
-        <ul class="tool-list">
-          <li><span><b>Анкета за 7–10 минут</b>: не только метраж и бюджет, но и то, как вы живёте</span></li>
-          <li><span><b>Документ «Идеальная квартира»</b> до первого показа, техзадание на поиск</span></li>
-          <li><span><b>Индекс МАСТА</b> по каждому объекту и рекомендация: покупать, рассмотреть или не покупать</span></li>
-        </ul>
-        <div class="tool-actions">
-          <a class="btn-primary" href="https://masta.waymaxgroup.ru/anketa" target="_blank" rel="noopener">Заполнить анкету</a>
-          <a class="btn-outline" href="https://masta.waymaxgroup.ru" target="_blank" rel="noopener">Как работает МАСТА</a>
-        </div>
-        <a class="tool-link" href="https://masta.waymaxgroup.ru/partneram" target="_blank" rel="noopener">Брокерам: работать по системе МАСТА →</a>
-      </div>
+    <p class="section-eyebrow reveal">Новое · Telegram-бот «Waymax Недвижимость»</p>
+    <h2 class="reveal">Рынок новостроек Москвы <em>в одном чате</em></h2>
+    <p class="section-lead reveal" style="margin-top:1rem">Цены, планировки, ипотека и сравнение проектов за секунды, днём и ночью. Для покупателей, инвесторов и брокеров. Бесплатно, база обновляется каждую ночь.</p>
+    <div class="bot-grid reveal">
+      <div class="bot-tile"><h3>Любой ЖК</h3><p>Фото, цены, сроки сдачи, планировки, что рядом и точка на карте.</p><q>Сидней Сити</q></div>
+      <div class="bot-tile"><h3>Подбор</h3><p>Сколько квартир продаётся под ваш бюджет, комнаты и срок сдачи, и почём.</p><q>двушка до 25 млн</q></div>
+      <div class="bot-tile"><h3>Сравнение</h3><p>Два проекта рядом: цена метра, бюджет входа, сроки, школы и парки.</p><q>ЭРА или Шагал</q></div>
+      <div class="bot-tile"><h3>Ипотека</h3><p>Ежемесячный платёж и доход, который попросит банк.</p><q>15 млн, взнос 3 млн, 30 лет</q></div>
+      <div class="bot-tile"><h3>Цены по районам</h3><p>Где метр дешевле, а где дороже, по медиане реальных предложений.</p><q>Хамовники</q></div>
+      <div class="bot-tile"><h3>Слежу за ЖК</h3><p>Бот сам напишет, когда в проекте меняются цены или выходят новые квартиры.</p><span class="cmd">кнопка «Следить»</span></div>
+      <div class="bot-tile"><h3>Вопросы о покупке</h3><p>Эскроу, налоговый вычет, приёмка, инвестиции: коротко и по делу.</p><q>что такое эскроу</q></div>
+      <div class="bot-tile bot-tile--gold"><h3>Разбор МАСТА</h3><p>Анкета прямо в чате, через пять минут мини-разбор: что искать именно вам.</p><span class="cmd">команда /anketa</span></div>
+    </div>
+    <div class="bot-foot reveal">
+      <p>Номер телефона по желанию. Эксперт Waymax подключится, только когда вы сами попросите.</p>
+      <a class="btn-primary" href="https://t.me/waymaxgroup_bot?start=site" target="_blank" rel="noopener">Открыть бота</a>
     </div>
   </div>
 </section>
@@ -1156,7 +1176,8 @@
     <div class="footer-links">
       <a href="index.html#philosophy">Философия</a>
       <a href="index.html#index-reliability">Индекс надёжности</a>
-      <a href="index.html#tools">Бот и МАСТА</a>
+      <a href="index.html#masta">МАСТА</a>
+      <a href="index.html#bot">Бот</a>
       <a href="index.html#objects">Объекты</a>
       <a href="index.html#contact">Контакты</a>
       <a href='privacy.html'>Политика конфиденциальности</a>
