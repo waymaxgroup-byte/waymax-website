@@ -1,2 +1,6 @@
+# Managed by seo-engine. Edits here are overwritten on the next run.
 User-agent: *
 Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid&start&from
+
+Sitemap: https://waymaxgroup.ru/sitemap.xml
